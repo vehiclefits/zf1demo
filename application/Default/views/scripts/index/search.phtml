@@ -8,13 +8,6 @@ $search->getFlexible()->storeFitInSession();
 <form action="/" method="<?= $search->getMethod() ?>" id="<?= $search->formId() ?>" name="<?= $search->formId() ?>">
     <input type="hidden" id="vafProduct" value="<?= $search->getProductId() ?>"/>
 
-    Item Name <input type="text" name="item_name" value="<?= $this->escape($this->item_name) ?>"/>
-    <?php
-    if ($this->br_tags) {
-        echo '<br />';
-    }
-    ?>
-
     <!-- start "category chooser" -->
     <?php
     echo '<input type="hidden" name="category" id="categorySelect" value="?" />';

@@ -112,13 +112,6 @@
 <body>
     <div id="header">
         <a href="/index.php"><img id="logo" src="/images/logo.png" /></a>
-        <br />
-        <?php
-        $count = $select = Zend_Registry::get('db')->select()
-                ->from('product',array('count(*)'))
-                ->query()->fetchColumn();
-        echo '&nbsp;<i>Indexing ' . number_format($count) . ' parts.</i>';
-        ?>
     </div>
     
         
