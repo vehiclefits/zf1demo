@@ -1,0 +1,42 @@
+<?=$this->partial('index/search.phtml', array(
+    'item_name' => $this->item_name,
+    'request' => $this->request
+))?>
+<?php
+echo $this->paginationControl($this->paginator,
+    'Sliding',
+    'pagination_control.phtml', array('item_name' => $this->item_name));
+
+foreach ($this->paginator as $product) {
+    ?>
+    <div class="item">
+
+        <?php
+        if (file_exists(VFSEARCH_BASE_PATH . '/html/product_images/' . $product['id'])) {
+            ?>
+            <img width="100" height="100"
+                 src="<?= $this->url(array('controller' => 'image', 'action' => 'view', 'id' => $product['id']), 'default', true) ?>"/>
+        <?php
+        }
+        ?>
+        <div class="additional">
+            Seller: <?= $this->escape($product['seller']) ?>
+            <br/>
+            Product ID: <?= $this->escape($product['id']) ?>
+            <br/>
+            SKU: <?= $this->escape($product['sku']) ?>
+        </div>
+
+        <a href="<?= $this->escape($product['url']) ?>"><?= $this->escape($this->truncate($product['title'], 100)) ?></a>
+        <span class="price"><?= $this->currency($product['price']) ?></span>
+
+        <p><?= $this->escape($this->truncate($product['description'], 1000)) ?></p>
+
+    </div>
+<?php
+}
+
+echo $this->paginationControl($this->paginator,
+    'Sliding',
+    'pagination_control.phtml', array('item_name' => $this->item_name))
+?>
