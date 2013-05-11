@@ -5,6 +5,7 @@ class IndexController extends Zend_Controller_Action
     function indexAction()
     {
         $this->view->request = $this->getRequest();
+        $this->view->selected_vehicle = $this->flexibleSearch()->vehicleSelection()->getFirstVehicle();
     }
 
     function hasVehicleSelection()
@@ -23,7 +24,7 @@ class IndexController extends Zend_Controller_Action
     function flexibleSearch()
     {
         $search = new VF_FlexibleSearch(new VF_Schema, $this->getRequest());
-        $search->setConfig(Elite_Vaf_Helper_Data::getInstance()->getConfig());
+        $search->setConfig(VF_Singleton::getInstance()->getConfig());
         return $search;
     }
 }

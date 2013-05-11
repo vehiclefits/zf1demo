@@ -1,3 +1,8 @@
-<?=$this->partial('index/search.phtml', array(
+<?php
+if($this->selected_vehicle) {
+    echo 'You selected ' . $this->escape($this->selected_vehicle);
+}
+
+echo $this->partial('index/search.phtml', array(
     'request' => $this->request
-))?>
+));
