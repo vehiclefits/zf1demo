@@ -1,0 +1,3 @@
+[submodule "Vehicle-Fits-Core"]
+	path = Vehicle-Fits-Core
+	url = git@github.com:vehiclefits/Vehicle-Fits-Core.git
